@@ -1,0 +1,20 @@
+/*
+  用于声明该页面分类当前类别下的数据操作类型
+
+
+*/
+
+
+export const GETPRODUCTION = 'GETPRODUCTION'
+
+export const TOGGLESELECT = 'TOGGLESELECT'
+
+export const EDITPRODUCTION = 'EDITPRODUCTION'
+
+export const ADDPRODUCTION = 'ADDPRODUCTION'
+
+export const DELPRODUCTION = 'DELPRODUCTION'
+
+export const CLEARSELECTED = 'CLEARSELECTED'
+
+

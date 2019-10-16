@@ -3,9 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^3.23.6",
+    "axios": "^0.19.0",
+    "echarts": "^4.3.0",
+    "echarts-for-react": "^2.0.15-beta.1",
+    "immutable": "^4.0.0-rc.12",
+    "mobx": "^5.14.0",
+    "mobx-react": "^6.1.3",
+    "mockjs": "^1.0.1-beta3",
+    "nprogress": "^0.2.0",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-loadable": "^5.5.0",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -27,5 +42,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://result.eolinker.com/XWHkewC202109af5ad44cd0893e8954bba2342eb59f7bbf?uri=/getListhttps://result.eolinker.com/XWHkewC202109af5ad44cd0893e8954bba2342eb59f7bbf?uri="
 }

@@ -1,0 +1,140 @@
+small {
+    opacity: .6;
+  }
+  .text-muted{
+    opacity: .6;
+  }
+  .clear{
+    display: block;
+    overflow: hidden;
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .y-center{
+    display: flex;
+    align-items: center;
+  }
+  .block{
+    display: block;
+  }
+  .inline {
+    display: inline;
+  }
+  .none{
+    display: none;
+  }
+  .b-white {
+    border-color: #ffffff;
+  }
+  .w-full {
+    width: 100%;
+  }
+  
+  .w-auto {
+    width: auto;
+  }
+  
+  .h-auto {
+    height: auto;
+  }
+  
+  .h-full {
+    height: 100%;
+  }
+  
+  .h-v {
+    height: 100vh;
+  }
+  
+  .h-v-5 {
+    height: 50vh;
+  }
+  
+  .card-tool {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    cursor: pointer;
+  }
+  
+  .pull-left {
+    float: left;
+  }
+  
+  .pull-right {
+    float: right;
+  }
+  
+  .w-40 {
+    width:  40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+  }
+  .mr-m {
+    margin-right: 1rem !important;
+}
+
+.text-2x {
+    font-size: 2rem;
+}
+.text-danger, .text-danger-hover a:hover {
+    color: #f44455 !important;
+}
+
+.gutter-box {
+    padding: 5px 0;
+}
+
+.text-info, .text-info-hover a:hover {
+    color: #6887ff !important;
+}
+.text-success, .text-success-hover a:hover {
+    color: #6cc788 !important;
+}
+.react_for_echarts {
+    height: 212px;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    position: relative;
+}
+.no-padding{
+    padding: 0
+}
+.pb-m {
+    padding-bottom: 1rem !important;
+}
+
+.no-border{
+    border: none
+}
+
+.img-responsive {
+    width: 100%;
+    height: auto;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    margin-bottom: -1px;
+    padding: 12px 16px;
+    background: transparent;
+    border: 1px solid #ddd;
+    border-color: rgba(120, 130, 140, 0.065);
+    border-width: 1px 0;
+}
+.list-group-item:first-child{
+    border-top-width: 0;
+}
+
+.list-group-item:last-child{
+    border-bottom-width: 0;
+}
