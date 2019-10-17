@@ -7,7 +7,6 @@ class User extends React.Component{
 
     // 用于在父组件中调用子组件方法.
     onRef = (name, ref) => {
-        console.log(name)
         switch (name) {
         case 'searchCommon':
             this.searchCommon = ref
@@ -37,13 +36,64 @@ class User extends React.Component{
         const ExportOptions = {
             method: 'get',
             url: '/Export',
-            data: {}
+            data: {
+                name: '123'
+            }
         }
+
+        const searchOptions = [
+            {
+                label: '订单号',
+                key: 'orderNo',
+                type: 'input',
+                notice: '请输入订单号',
+                placeholder: '请输入订单号'
+            },
+            {
+                label: '收件人',
+                key: 'receiver',
+                type: 'input',
+                notice: '请输入收件人',
+                placeholder: '请输入收件人'
+            },
+            {
+                label: '地址',
+                key: 'address',
+                type: 'input',
+                notice: '请输入地址',
+                placeholder: '请输入地址'
+            },
+            {
+                label: '电话',
+                key: 'phone',
+                type: 'input',
+                notice: '请输入电话',
+                placeholder: '请输入电话'
+            },
+            {
+                label: '金额',
+                key: 'money',
+                type: 'input',
+                notice: '请输入金额',
+                placeholder: '请输入金额'
+            },
+            {
+                label: '排名',
+                key: 'order',
+                type: 'input',
+                notice: '请输入排名',
+                placeholder: '请输入排名'
+            }
+
+        ]
+
+
+
         return (
             <div>
                 <BreadcrumbBar arr={['用户']}/>
                 <div className="boxContainer">
-                    <SearchCommon ExportOptions={ExportOptions}  getSearchParams={this.getSearchParams.bind(this)} onRef={this.onRef.bind(this)}/>
+                    <SearchCommon searchOptions={searchOptions} ExportOptions={ExportOptions}  getSearchParams={this.getSearchParams.bind(this)} onRef={this.onRef.bind(this)}/>
                 用户设置
                 </div>
             </div>

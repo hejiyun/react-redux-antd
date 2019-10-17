@@ -58,12 +58,14 @@ export const proData = (state = defaultState, action) => {
         //如果操作类型是添加数据
         case pro.ADDPRODUCTION:
             immuDataList = Immutable.List(state.prod)
+            // 循环遍历查看state中是否存在要添加的项, 如果存在,则将对应下标赋值给current,
             for (let i = 0; i < state.prod.length; i ++) {
                if (state.prod[i].name === action.prod.name) {
                    current = i
                }
             }
-            // 这里判断不能用current来判断,因为current===0的时候,也会进入else步骤
+            // 这里判断不能用current来判断,因为current===0的时候,也会进入else步骤, 
+            // 如果存在, 则进行修改操作, 否则进行添加操作
             if (current !== undefined) {
                 immuDataList = immuDataList.set(current, action.prod)
             } else {
