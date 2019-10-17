@@ -1,5 +1,5 @@
 import * as pro from './action-type'
-// 自测Immutable的方法意义, 类似后台java语言方法.
+// 自测Immutable的方法意义, 类似后台java语言方法.  用不用都可以, 只需要操作state中对应的商品集合就行, immutable只是为了更好的理解下更多的方式.
 import Immutable from 'immutable';
 
 let defaultState = {
@@ -24,6 +24,7 @@ let defaultState = {
 export const proData = (state = defaultState, action) => {
     let immuDataList; // 用于存储操作数据源
     let immuItem; // 用于存储当前需要操作的数据
+    let current; // 用于存储当前数据在state中的位置
     // 使用switch-case条件语句来进行业务逻辑区分
     switch (action.type) {
 
@@ -57,10 +58,14 @@ export const proData = (state = defaultState, action) => {
         //如果操作类型是添加数据
         case pro.ADDPRODUCTION:
             immuDataList = Immutable.List(state.prod)
-            immuItem = Immutable.Map(state.prod[action.index])
-            // 这里判断不能用immuItem/!immuItem,因为Map取出的是一个对象, 可以通过 size是否为0来判断是否有初始值
-            if (immuItem.size !== 0) {
-                immuDataList = immuDataList.set(action.index, action.prod)
+            for (let i = 0; i < state.prod.length; i ++) {
+               if (state.prod[i].name === action.prod.name) {
+                   current = i
+               }
+            }
+            // 这里判断不能用current来判断,因为current===0的时候,也会进入else步骤
+            if (current !== undefined) {
+                immuDataList = immuDataList.set(current, action.prod)
             } else {
                 immuDataList = immuDataList.push(action.prod)
             }
@@ -68,18 +73,13 @@ export const proData = (state = defaultState, action) => {
 
         //如果操作类型是删除数据
         case pro.DELPRODUCTION:
-            console.log(action.item, '数组')
             immuDataList = Immutable.List(state.prod)
-            console.log(immuDataList, '删除前数据')
-            console.log(state.prod)
-            let current
             for (let i = 0; i < state.prod.length; i ++) {
-               if (state.prod[i].name === action.item.name) {
+               if (state.prod[i].name === action.prod.name) {
                    current = i
                }
             }
             immuDataList = immuDataList.delete(current)
-            console.log(immuDataList, '删除后数组')
             return {...state, ...{prod: immuDataList.toJS()}}
 
         //如果操作类型是清除数字

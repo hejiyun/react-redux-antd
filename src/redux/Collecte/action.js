@@ -45,11 +45,11 @@ export const addPro = (index, prod) => {
 }
 
 
-export const delPro = (index, item) => {
+export const delPro = (index, prod) => {
     return {
         type: pro.DELPRODUCTION,
         index,
-        item
+        prod
     }
 }
 

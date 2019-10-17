@@ -2,7 +2,7 @@ import React from 'react'
 import {withRouter } from 'react-router';
 import BreadcrumbBar from '../../components/Breadcrumb/index'
 import TableCommon from '../../components/TableCommon/index'
-import {Divider, Button, Popconfirm} from 'antd'
+import {Divider, Button, Popconfirm } from 'antd'
 
 
 class orderList extends React.Component{
@@ -16,14 +16,21 @@ class orderList extends React.Component{
     }
     
     // 用于在父组件中调用子组件方法.
-    onRef = (ref) => {
-      this.child = ref
+    onRef = (name, ref) => {
+      console.log(name)
+      switch (name) {
+        case 'tableCommon':
+          this.tableCommon = ref
+          break
+          default:
+            break
+      }
     }
 
     handleDelete = (key) => {
       console.log(key)
       // 进行完删除操作之后, 重新请求列表信息更新页面
-      this.child.getList()
+      this.tableCommon.getList()
     }
 
     /**
@@ -90,7 +97,8 @@ class orderList extends React.Component{
                 <BreadcrumbBar arr={['订单列表']}/>
                 <div className="boxContainer">
                 <p className="app-title-more">后台管理系统类别</p>
-                <TableCommon columns={columns}  requestMsg={requestMsg} pageSizeOptions={pageSizeOptions} onRef={this.onRef}/>
+                {/* 当有多子组件需要被父组件调用方法时, 使用onRef函数进行操作 https://blog.csdn.net/xingxingxingge/article/details/94382553 */}
+                <TableCommon columns={columns}  requestMsg={requestMsg} pageSizeOptions={pageSizeOptions} onRef={this.onRef.bind(this)}/>
                 </div>
             </div>
         )
