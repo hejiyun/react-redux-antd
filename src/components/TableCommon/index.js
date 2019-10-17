@@ -31,7 +31,7 @@ class TableCommon extends React.Component {
     }
     this.fetch(params);
     //提供父组件调用table的getList方法
-    this.props.onRef(this)
+    this.props.onRef('tableCommon', this)
   }
 
   // 组件调用前, 此时可以对数据进行操作
@@ -49,11 +49,12 @@ class TableCommon extends React.Component {
   }
 
   // 提供给父组件进行增删改查操作后,刷新列表的方法
-  getList = () => {
+  getList = (data) => {
     // 这里重新请求当前页的数据.
     const params = {
       pageSize: this.state.pagination.pageSize,
-      pageNumber: this.state.pagination.current
+      pageNumber: this.state.pagination.current,
+      ...data
     }
     this.fetch(params)
   }
