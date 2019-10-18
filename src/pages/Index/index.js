@@ -15,6 +15,7 @@ class Index extends React.Component{
       screenWidth: ''
     }
   
+
     componentWillMount() {
       this.setState({
         screenWidth: document.body.clientWidth

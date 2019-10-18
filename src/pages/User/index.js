@@ -1,6 +1,7 @@
 import React from 'react'
 import BreadcrumbBar from '../../components/Breadcrumb/index'
 import SearchCommon from '../../components/SearchCommon/index'
+import moment from 'moment'
 
 class User extends React.Component{
 
@@ -18,6 +19,7 @@ class User extends React.Component{
    
     getSearchParams = (params) => {
         console.log('点击搜索后获取的对象', params)
+        console.log(params.order[0])
     }
     /*
       子组件给父组件传值:   父组件在子组件上定义 getSearchParams1={this.getSearchParams.bind(this)},
@@ -47,7 +49,7 @@ class User extends React.Component{
                 key: 'orderNo',
                 type: 'input',
                 notice: '请输入订单号',
-                placeholder: '请输入订单号'
+                placeholder: '请输入订单号',
             },
             {
                 label: '收件人',
@@ -61,28 +63,33 @@ class User extends React.Component{
                 key: 'address',
                 type: 'input',
                 notice: '请输入地址',
-                placeholder: '请输入地址'
+                placeholder: '请输入地址',
+                rule: true
+               
             },
             {
                 label: '电话',
                 key: 'phone',
                 type: 'input',
                 notice: '请输入电话',
-                placeholder: '请输入电话'
+                placeholder: '请输入电话',
             },
             {
                 label: '金额',
                 key: 'money',
                 type: 'input',
                 notice: '请输入金额',
-                placeholder: '请输入金额'
+                placeholder: '请输入金额',
+                rule: true
             },
             {
                 label: '排名',
                 key: 'order',
-                type: 'input',
+                type: 'data',
                 notice: '请输入排名',
-                placeholder: '请输入排名'
+                placeholder: '请输入排名',
+                defaultValue: [moment('2015/01/01','YYYY/MM/DD'), moment('2015/01/01', 'YYYY/MM/DD')],
+                dateFormat: 'YYYY/MM/DD'
             }
 
         ]

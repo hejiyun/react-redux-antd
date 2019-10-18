@@ -1,13 +1,16 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { Form, Row, Col, Input, Button, notification  } from 'antd';
+import { Form, Row, Col, Input, Button, notification, DatePicker   } from 'antd';
 import './index.css'
 import Axios from 'axios';
 
 
+const { RangePicker } = DatePicker
+
 class SearchBar extends React.Component{
     state = {
         expand: false,
+        clientWidth: ''
       };
 
     // 创建表单元素
@@ -17,16 +20,17 @@ class SearchBar extends React.Component{
         const children = [];
         for (let i = 0; i < options.length; i++) {
         children.push(
-            <Col xs={24} sm={12} md={8} lg={6} xl={6} key={i}>
-            <Form.Item  label={options[i].label}>
-                {getFieldDecorator(options[i].label, {
-                rules: [
+            <Col  xs={24} sm={12} md={8} lg={6} xl={6} key={i}>
+            <Form.Item className={(this.state.clientWidth > 991 || this.state.clientWidth <= 767) ? '' : 'sadasd' } label={options[i].label}>
+                {getFieldDecorator(options[i].key, {
+                  initialValue: options[i].defaultValue,
+                  rules: [
                     {
-                    required: true,
+                    required: options[i].rule,
                     message: `${options[i].notice}`,
                     },
                 ],
-                })(<Input placeholder={options[i].placeholder} />)}
+                })(this.getType(options[i]))}
             </Form.Item>
             </Col>,
         );
@@ -34,6 +38,18 @@ class SearchBar extends React.Component{
         return children;
     }
 
+    getType = (item) => {
+      switch(item.type) {
+        case 'input':
+          return <Input style={{width: '100%'}} placeholder={item.placeholder} />
+        case 'data':
+          return <RangePicker style={{width: '100%'}} format={item.dateFormat}/>
+        default:
+          return <Input style={{width: '100%'}} placeholder={item.placeholder} />
+
+      }
+      
+    }
   
     // 点击搜索按钮触发事件 
     handleSearch = e => {
@@ -92,14 +108,23 @@ class SearchBar extends React.Component{
         })
 
     }
- 
+
     componentDidMount() {
-        this.props.onRef('searchCommon', this)
+      this.setState({
+        clientWidth: document.body.clientWidth
+      })
+      this.props.onRef('searchCommon', this)
+    }
+    componentWillReceiveProps(nextProps) {
+      // 只要组件产生变化,就会触发, 无论何种状态, 视口的改变, 数据的变化, 等等, 类似监听器.
+      this.setState({
+        clientWidth: document.body.clientWidth
+      })
     }
 
   render() {
     return (
-      <Form className="ant-advanced-search-form" onSubmit={this.handleSearch}>
+      <Form className="ant-advanced-search-form reflax" onSubmit={this.handleSearch}>
         <Row gutter={24}>{this.getFields()}</Row>
         <Row>
           <Col span={24} style={{ textAlign: 'center' }}>
