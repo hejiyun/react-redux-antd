@@ -23,7 +23,7 @@ class SearchBar extends React.Component{
             <Col  xs={24} sm={12} md={8} lg={6} xl={6} key={i}>
             <Form.Item className={(this.state.clientWidth > 991 || this.state.clientWidth <= 767) ? '' : 'sadasd' } label={options[i].label}>
                 {getFieldDecorator(options[i].key, {
-                  initialValue: options[i].defaultValue,
+                  initialValue: options[i].defaultValue, // 表单控件的默认值用initialValue定义
                   rules: [
                     {
                     required: options[i].rule,
