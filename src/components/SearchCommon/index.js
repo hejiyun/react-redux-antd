@@ -1,17 +1,45 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { Form, Row, Col, Input, Button, notification, DatePicker   } from 'antd';
+import { Form, Row, Col, Input, Button, notification, DatePicker, InputNumber, Checkbox, Select, Icon } from 'antd';
 import './index.css'
 import Axios from 'axios';
 
 
 const { RangePicker } = DatePicker
+const { Option } = Select;
 
 class SearchBar extends React.Component{
     state = {
         expand: false,
-        clientWidth: ''
+        clientWidth: '',
+        arr: []
       };
+
+    // select全选
+    onChange = (length, key, item)=>{
+      console.log(length)
+      console.log(key)
+      if(key.includes('all')){
+          if(length === this.state.arr.length){
+              this.setState({
+                arr: []
+              })
+          }else{
+              // let keyArr = this.props.children.map(x=>{
+              //     return x.key
+              // })
+              // this.props.onChange(keyArr)
+              this.setState({
+                arr: key
+              })
+          }
+      }else{
+        this.setState({
+          arr: key
+        })
+      }
+    }
+
 
     // 创建表单元素
     getFields() {
@@ -44,6 +72,19 @@ class SearchBar extends React.Component{
           return <Input style={{width: '100%'}} placeholder={item.placeholder} />
         case 'data':
           return <RangePicker style={{width: '100%'}} format={item.dateFormat}/>
+        case 'NumberInput': 
+          return <InputNumber style={{width: '100%'}} min={0} max={item.max} step={item.step} />
+        case 'checkBox':
+          return <Checkbox checked={item.checked} style={{width: '100%'}}>{item.placeholder}</Checkbox>
+        case 'select':
+          return <Select setFieldsValue={this.state.arr} mode="multiple" onChange={this.onChange.bind(this, item.options.length)} menuItemSelectedIcon={<Icon/>} maxTagCount={1} maxTagPlaceholder={`+1`} style={{ width: '100%' }}>
+                  <Option key='all'>全部</Option>
+                  {
+                    item.options.map(e => {
+                      return <Option key={e.value}>{e.label}</Option>
+                    })
+                  }
+                </Select>
         default:
           return <Input style={{width: '100%'}} placeholder={item.placeholder} />
 

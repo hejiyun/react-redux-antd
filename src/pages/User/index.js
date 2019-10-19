@@ -47,24 +47,42 @@ class User extends React.Component{
             {
                 label: '订单号',
                 key: 'orderNo',
-                type: 'input',
+                type: 'checkBox',
                 notice: '请输入订单号',
                 placeholder: '请输入订单号',
+                checked: true
             },
             {
                 label: '收件人',
                 key: 'receiver',
-                type: 'input',
+                type: 'NumberInput',
                 notice: '请输入收件人',
-                placeholder: '请输入收件人'
+                placeholder: '请输入收件人',
+                max: 100000,
+                step: 0.01
             },
             {
                 label: '地址',
                 key: 'address',
-                type: 'input',
+                type: 'select',
                 notice: '请输入地址',
                 placeholder: '请输入地址',
-                rule: true
+                rule: true,
+                defaultValue: 'jack',
+                options: [
+                    {
+                        label: '张三',
+                        value: 'jack'
+                    },
+                    {
+                        label: '李四',
+                        value: 'rose'
+                    },
+                    {
+                        label: '王五',
+                        value: 'tom'
+                    }
+                ]
                
             },
             {
