@@ -12,32 +12,12 @@ class SearchBar extends React.Component{
     state = {
         expand: false,
         clientWidth: '',
-        arr: []
+        oldOptions: ['all']
       };
 
     // select全选
-    onChange = (length, key, item)=>{
-      console.log(length)
-      console.log(key)
-      if(key.includes('all')){
-          if(length === this.state.arr.length){
-              this.setState({
-                arr: []
-              })
-          }else{
-              // let keyArr = this.props.children.map(x=>{
-              //     return x.key
-              // })
-              // this.props.onChange(keyArr)
-              this.setState({
-                arr: key
-              })
-          }
-      }else{
-        this.setState({
-          arr: key
-        })
-      }
+    onChange = (targe, val, item)=>{
+      // 多选下拉实现全选功能
     }
 
 
@@ -77,7 +57,7 @@ class SearchBar extends React.Component{
         case 'checkBox':
           return <Checkbox checked={item.checked} style={{width: '100%'}}>{item.placeholder}</Checkbox>
         case 'select':
-          return <Select setFieldsValue={this.state.arr} mode="multiple" onChange={this.onChange.bind(this, item.options.length)} menuItemSelectedIcon={<Icon/>} maxTagCount={1} maxTagPlaceholder={`+1`} style={{ width: '100%' }}>
+          return <Select mode="multiple" onChange={this.onChange.bind(this, item)} menuItemSelectedIcon={<Icon/>} maxTagCount={1} maxTagPlaceholder={`+1`} style={{ width: '100%' }}>
                   <Option key='all'>全部</Option>
                   {
                     item.options.map(e => {

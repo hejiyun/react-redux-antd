@@ -68,7 +68,7 @@ class User extends React.Component{
                 notice: '请输入地址',
                 placeholder: '请输入地址',
                 rule: true,
-                defaultValue: 'jack',
+                defaultValue: ['all'],
                 options: [
                     {
                         label: '张三',
