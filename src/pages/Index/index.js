@@ -62,6 +62,34 @@ class Index extends React.Component{
          background: '#000',
          opacity: '.3'
       }
+      // 侧边菜单栏选项
+      const siderOptions = [
+        {
+          to: '/Home',
+          name: '首页',
+          icon: 'pie-chart'
+        },
+        {
+          to: '/orderList',
+          name: '订单列表',
+          icon: 'desktop'
+        },
+        {
+          to: '/DeliverList',
+          name: '购物车列表',
+          icon: 'inbox'
+        },
+        {
+          to: '/User',
+          name: '用户',
+          icon: 'mail'
+        },
+        {
+          to: '/StockInquiry',
+          name: '库存查询',
+          icon: 'inbox'
+        }
+      ]
       return (
         <div id='page' style={{ height: '100%' }}>
           <Layout style={{ minHeight: '100vh' }}>
@@ -70,7 +98,7 @@ class Index extends React.Component{
               trigger={null} collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}
               style={screenWidth < 992 ? positionStyle : ''}>
               <div className={(screenWidth< 992 && !collapsed) ? 'isShow' : 'isHidden'} style={screenWidth <= 992 ? positionStylediv : {display: 'none'}} onClick={this.toggle}></div>
-              <SiderNav onToggle={this.toggle}/>
+              <SiderNav siderOptions={siderOptions} onToggle={this.toggle}/>
             </Sider>
             <Layout>
               <Header style={{ background: '#fff', padding: 0 }}>

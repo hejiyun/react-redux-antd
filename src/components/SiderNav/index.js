@@ -82,36 +82,16 @@ class SiderNav extends React.Component {
           inlineCollapsed={collapsed}
         >
           {/* key值绑定当前页面跳转pathName, 就可以通过地址栏输入,直接对应菜单栏高亮 */}
-          <Menu.Item key="/Home">
-            <Link to = { '/Home' }>
-              <Icon type="pie-chart" />
-              <span>首页</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/orderList">
-            <Link to = { '/orderList' }>
-              <Icon type="desktop" />
-              <span>订单列表</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/DeliverList">
-            <Link to = { '/DeliverList' }>
-              <Icon type="inbox" />
-              <span>购物车列表</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/User">
-            <Link to = { '/User' }>
-              <Icon type="mail" />
-              <span>用户</span>
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="/StockInquiry">
-            <Link to = { '/StockInquiry' }>
-              <Icon type="inbox" />
-              <span>库存查询</span>
-            </Link>
-          </Menu.Item>
+          {
+            this.props.siderOptions.map(item => {
+              return  <Menu.Item key={item.to}>
+                        <Link to = { item.to }>
+                          <Icon type={item.icon} />
+                          <span>{item.name}</span>
+                        </Link>
+                      </Menu.Item>
+            })
+          }
         </Menu>
       </div>
     );
