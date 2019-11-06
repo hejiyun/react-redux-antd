@@ -104,7 +104,7 @@ class Index extends React.Component{
               <Header style={{ background: '#fff', padding: 0 }}>
                 <HeaderBar collapsed={this.state.collapsed} onToggle={this.toggle}/>
               </Header>
-              <Content>
+              <Content style={{ overflow: 'initial', flex: '1 1 0' }}>
                   <ContentMain/>
               </Content>
               <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>

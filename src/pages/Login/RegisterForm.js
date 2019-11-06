@@ -56,6 +56,11 @@ class RegistrationForm extends React.Component {
     callback();
   };
 
+  login = () => {
+    // 显示注册组件
+    this.props.switchShowBox('login')
+    setTimeout(() => this.props.form.resetFields(), 500)
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -93,28 +98,28 @@ class RegistrationForm extends React.Component {
 
     return (
       <div className={this.props.className}>
-          <h3>管理员登录</h3>
-        <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-          <Form.Item label="E-mail">
+        <h3 style={{color: 'white'}}>新用户注册</h3>
+        <Form labelAlign="left" {...formItemLayout} onSubmit={this.handleSubmit}>
+          <Form.Item label="邮箱">
             {getFieldDecorator('email', {
               rules: [
                 {
                   type: 'email',
-                  message: 'The input is not valid E-mail!',
+                  message: '邮箱格式不正确!',
                 },
                 {
                   required: true,
-                  message: 'Please input your E-mail!',
+                  message: '请输入邮箱!',
                 },
               ],
             })(<Input />)}
           </Form.Item>
-          <Form.Item label="Password" hasFeedback>
+          <Form.Item label="密码" hasFeedback>
             {getFieldDecorator('password', {
               rules: [
                 {
                   required: true,
-                  message: 'Please input your password!',
+                  message: '请输入密码!',
                 },
                 {
                   validator: this.validateToNextPassword,
@@ -122,12 +127,12 @@ class RegistrationForm extends React.Component {
               ],
             })(<Input.Password />)}
           </Form.Item>
-          <Form.Item label="Confirm Password" hasFeedback>
+          <Form.Item label="确认密码" hasFeedback>
             {getFieldDecorator('confirm', {
               rules: [
                 {
                   required: true,
-                  message: 'Please confirm your password!',
+                  message: '请确认您的密码!',
                 },
                 {
                   validator: this.compareToFirstPassword,
@@ -138,27 +143,27 @@ class RegistrationForm extends React.Component {
           <Form.Item
             label={
               <span>
-                Nickname&nbsp;
-                <Tooltip title="What do you want others to call you?">
+                昵称&nbsp;
+                <Tooltip title="你希望别人怎么称呼你?">
                   <Icon type="question-circle-o" />
                 </Tooltip>
               </span>
             }
           >
             {getFieldDecorator('nickname', {
-              rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+              rules: [{ required: true, message: '请输入你的昵称!', whitespace: true }],
             })(<Input />)}
           </Form.Item>
-          <Form.Item label="Phone Number">
+          <Form.Item label="手机">
             {getFieldDecorator('phone', {
-              rules: [{ required: true, message: 'Please input your phone number!' }],
+              rules: [{ required: true, message: '请输入您的手机号!' }],
             })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
           </Form.Item>
-          <Form.Item label="Captcha" extra="We must make sure that your are a human.">
+          <Form.Item label="验证码" extra="我们必须确认不是机器人">
             <Row gutter={8}>
               <Col span={12}>
                 {getFieldDecorator('captcha', {
-                  rules: [{ required: true, message: 'Please input the captcha you got!' }],
+                  rules: [{ required: true, message: '请输入验证码!' }],
                 })(<Input />)}
               </Col>
               <Col span={12}>
@@ -171,13 +176,16 @@ class RegistrationForm extends React.Component {
               valuePropName: 'checked',
             })(
               <Checkbox>
-                I have read the <span>agreement</span>
+                我同意 <span>这份协议</span>
               </Checkbox>,
             )}
           </Form.Item>
           <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit">
-              Register
+              注册
+            </Button>
+            <Button style={{marginLeft: '10%'}} type="primary" onClick={this.login}>
+              返回
             </Button>
           </Form.Item>
         </Form>
