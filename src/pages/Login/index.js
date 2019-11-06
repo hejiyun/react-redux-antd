@@ -28,7 +28,7 @@ class Login extends React.Component{
         const {showBox} = this.state
         return (
             <div id='login-page'>
-                <div className='container'>
+                <div className={showBox === 'login' ? 'container' : 'container1'}>
                     <LoginForm
                     className={showBox === 'login' ? 'box showBox' : 'box hiddenBox'}
                     switchShowBox={this.switchShowBox}/>

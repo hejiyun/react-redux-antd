@@ -37,7 +37,7 @@ class NormalLoginForm  extends React.Component{
         console.log(this.props.className)
         return (
            <div className={this.props.className}>
-               <h3>管理员登录</h3>
+               <h3 style={{color: 'white'}}>用户登录</h3>
                <Form onSubmit={this.loginSubmit} className="login-form">
                     <Form.Item>
                     {getFieldDecorator('username', {
@@ -68,7 +68,7 @@ class NormalLoginForm  extends React.Component{
                             })(<Input />)}
                             </Col>
                             <Col span={12}>
-                            <Button>Get captcha</Button>
+                            <Button>获取验证码</Button>
                             </Col>
                         </Row>
                     </Form.Item>
@@ -76,11 +76,13 @@ class NormalLoginForm  extends React.Component{
                     {getFieldDecorator('remember', {
                         valuePropName: 'checked',
                         initialValue: true,
-                    })(<Checkbox style={{ color: 'white' }}>Remember me</Checkbox>)}
-                    <Button type="primary" htmlType="submit" className="login-form-button">
-                        Log in
-                    </Button>
-                    Or <span className="register-change-span" onClick={this.register}>register now!</span>
+                    })(<Checkbox style={{ color: 'white' }}>记住密码</Checkbox>)}
+                    <Col style={{textAlign: 'center'}}>
+                        <Button type="primary" htmlType="submit" className="login-form-button">
+                            登录
+                        </Button>
+                        <span className="register-change-span" onClick={this.register}>立即注册!</span>
+                    </Col>
                     </Form.Item>
                 </Form>
            </div>
