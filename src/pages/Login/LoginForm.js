@@ -2,6 +2,7 @@ import React from 'react'
 import {withRouter }  from 'react-router-dom'
 import { Form, Icon, Input, Button, Checkbox, Row, Col, } from 'antd';
 import './style.css'
+import fgo from '../../images/fgo.jpg'
 
 class NormalLoginForm  extends React.Component{
     state = {
@@ -38,6 +39,7 @@ class NormalLoginForm  extends React.Component{
         return (
            <div className={this.props.className}>
                <h3 style={{color: 'white'}}>用户登录</h3>
+               <img src={fgo} alt="图片加载失败" width="100%" style={{ marginBottom: '20px'}}></img>
                <Form onSubmit={this.loginSubmit} className="login-form">
                     <Form.Item>
                     {getFieldDecorator('username', {

@@ -20,22 +20,16 @@
     color: white;
     cursor: pointer;
 }
+
 #login-page .container{
     position: relative;
-    width: 280px;
+    width: 400px;
     height: 560px;
     padding: 20px;
     box-sizing: content-box;
     transition: all 1s;
 }
-#login-page .container1{
-    position: relative;
-    width: 400px;
-    min-height: 560px;
-    padding: 20px;
-    box-sizing: content-box;
-    transition: all 1s;
-}
+
 #login-page .login-form-captcha {
     display: inline-block;
     width: 60%
